@@ -173,7 +173,7 @@ class MatchingPoolThread(threading.Thread):
             return team_list
 
         for i in range(5):
-            if (b_win < 0.45 and summoner_list[i] < team_list[i]) or (b_win > 0.55 and summoner_list[i] > team_list[i]):
+            if (b_win < 0.45 and summoner.score(summoner_list[i]) < summoner.score(team_list[i])) or (b_win > 0.55 and summoner.score(summoner_list[i]) > summoner.score(team_list[i])):
                 temp = team_list[i]
                 team_list[i] = summoner_list[i]
                 summoner_list[i] = temp
