@@ -38,7 +38,7 @@ matching = Matching()
 
 class SummonerIds(Config):
     def __init__(self):
-        self.file_name = 'SummIds2016.csv'
+        self.file_name = 'datasets/SummIds2016.csv'
         super(SummonerIds, self).__init__()
 
     def score(self, ids):
@@ -58,13 +58,23 @@ summoner = SummonerIds()
 class GoldSummonerIds(Config):
 
     def __init__(self):
-        self.file_name = 'GoldSummData2016.csv'
+        self.file_name = 'datasets/GoldSummData2016.csv'
         super(GoldSummonerIds, self).__init__()
 
     def ids(self, row):
         for para in self.config:
             if int(para["id"]) == int(row):
                 return int(para["SummonerId"])
+
+    def score(self, ids):
+        for para in self.config:
+            if int(para["SummonerId"]) == int(ids):
+                return int(para["Score"])
+
+    def win_rate(self, ids):
+        for para in self.config:
+            if int(para["SummonerId"]) == int(ids):
+                return float(para["WinRate"])
 
 
 gold_summoner = GoldSummonerIds()

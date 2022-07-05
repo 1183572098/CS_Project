@@ -1,0 +1,41 @@
+bad matches rate: 0.035466254622940944
+
+bad matches top max influence: 0.5555555555555556
+bad matches top min influence: 0.0
+bad matches top average influence: 0.18825723933071417
+
+bad matches jungle max influence: 0.625
+bad matches jungle min influence: 0.04512105649303008
+bad matches jungle average influence: 0.19945619931159395
+
+bad matches mid max influence: 0.474025974025974
+bad matches mid min influence: 0.0
+bad matches mid average influence: 0.20699248582371338
+
+bad matches bottom max influence: 0.4285714285714286
+bad matches bottom min influence: 0.0
+bad matches bottom average influence: 0.20471713409078973
+
+bad matches support max influence: 0.41444444444444445
+bad matches support min influence: 0.0
+bad matches support average influence: 0.20057694144318877
+
+good matches top max influence: 0.7451923076923077
+good matches top min influence: 0.0
+good matches top average influence: 0.1874912835165564
+
+good matches jungle max influence: 0.5031616982836495
+good matches jungle min influence: 1.513447810957748e-06
+good matches jungle average influence: 0.20226058612601988
+
+good matches mid max influence: 0.4965546942291128
+good matches mid min influence: 0.0
+good matches mid average influence: 0.2048497712088168
+
+good matches bottom max influence: 0.44191919191919193
+good matches bottom min influence: 0.0
+good matches bottom average influence: 0.20183999763167043
+
+good matches support max influence: 0.5086580086580086
+good matches support min influence: 0.0
+good matches support average influence: 0.20352986542614204
