@@ -39,3 +39,10 @@ good matches bottom average influence: 0.20183999763167043
 good matches support max influence: 0.5086580086580086
 good matches support min influence: 0.0
 good matches support average influence: 0.20352986542614204
+
+top influence between bad and good matches: 0.00076595581415777
+jungle influence between bad and good matches: 0.00280438681442593
+mid influence between bad and good matches: 0.00214271461489658
+bottom influence between bad and good matches: 0.0028771364591193
+support influence between bad and good matches: 0.00295292398295327
+TOP:JUNGLE:MID:BOTTOM:SUPPORT = 76:280:214:288:295

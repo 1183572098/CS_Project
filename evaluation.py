@@ -23,21 +23,29 @@ jungle_gap = []
 mid_gap = []
 bottom_gap = []
 support_gap = []
+team_gap = []
 
 print("Blue team win rate(average): {}".format(df["blue team win rate"].mean()))
 gold_summoner = pd.read_csv("datasets/GoldSummData2016.csv")
 
 log_counts = 0
 for index, row in df.iterrows():
-    top_gap.append(abs(gold_summoner[gold_summoner["SummonerId"] == row["blue top"]]["Score"].values[0]-gold_summoner[gold_summoner["SummonerId"] == row["red top"]]["Score"].values[0]))
-    jungle_gap.append(abs(gold_summoner[gold_summoner["SummonerId"] == row["blue jungle"]]["Score"].values[0]-gold_summoner[gold_summoner["SummonerId"] == row["red jungle"]]["Score"].values[0]))
-    mid_gap.append(abs(gold_summoner[gold_summoner["SummonerId"] == row["blue mid"]]["Score"].values[0]-gold_summoner[gold_summoner["SummonerId"] == row["red mid"]]["Score"].values[0]))
-    bottom_gap.append(abs(gold_summoner[gold_summoner["SummonerId"] == row["blue bottom"]]["Score"].values[0]-gold_summoner[gold_summoner["SummonerId"] == row["red bottom"]]["Score"].values[0]))
-    support_gap.append(abs(gold_summoner[gold_summoner["SummonerId"] == row["blue support"]]["Score"].values[0]-gold_summoner[gold_summoner["SummonerId"] == row["red support"]]["Score"].values[0]))
+    top_score_gap = gold_summoner[gold_summoner["SummonerId"] == row["blue top"]]["Score"].values[0]-gold_summoner[gold_summoner["SummonerId"] == row["red top"]]["Score"].values[0]
+    top_gap.append(abs(top_score_gap))
+    jungle_score_gap = gold_summoner[gold_summoner["SummonerId"] == row["blue jungle"]]["Score"].values[0]-gold_summoner[gold_summoner["SummonerId"] == row["red jungle"]]["Score"].values[0]
+    jungle_gap.append(abs(jungle_score_gap))
+    mid_score_gap = gold_summoner[gold_summoner["SummonerId"] == row["blue mid"]]["Score"].values[0]-gold_summoner[gold_summoner["SummonerId"] == row["red mid"]]["Score"].values[0]
+    mid_gap.append(abs(mid_score_gap))
+    bottom_score_gap = gold_summoner[gold_summoner["SummonerId"] == row["blue bottom"]]["Score"].values[0]-gold_summoner[gold_summoner["SummonerId"] == row["red bottom"]]["Score"].values[0]
+    bottom_gap.append(abs(bottom_score_gap))
+    support_score_gap = gold_summoner[gold_summoner["SummonerId"] == row["blue support"]]["Score"].values[0]-gold_summoner[gold_summoner["SummonerId"] == row["red support"]]["Score"].values[0]
+    support_gap.append(abs(support_score_gap))
+
+    team_gap.append(top_score_gap*76 + jungle_score_gap*280 + mid_score_gap*214 + bottom_score_gap*288 + support_score_gap*295)
     log_counts += 1
     print("print log counts to show the evaluation is processing...{}".format(log_counts))
 
-gap_dict = {"top gap": top_gap, "jungle gap":jungle_gap, "mid gap":mid_gap, "bottom gap":bottom_gap, "support gap": support_gap}
+gap_dict = {"top gap": top_gap, "jungle gap":jungle_gap, "mid gap":mid_gap, "bottom gap":bottom_gap, "support gap": support_gap, "team gap": team_gap}
 data_gap = DataFrame(gap_dict)
 d2 = data_gap["top gap"].hist().get_figure()
 d2.savefig("results/top gap.jpg")
@@ -53,6 +61,9 @@ d2.savefig("results/bottom gap.jpg")
 
 d2 = data_gap["support gap"].hist().get_figure()
 d2.savefig("results/support gap.jpg")
+
+d2 = data_gap["team gap"].hist().get_figure()
+d2.savefig("results/team gap.jpg")
 
 print("The biggest score gap between summoners as for Top is: {}".format(max(top_gap)))
 print("The biggest score gap between summoners as for jungle is: {}".format(max(jungle_gap)))
@@ -71,3 +82,5 @@ bottom_gap.sort(reverse=True)
 print("3.55% biggest score gap as for bottom is: {}".format(bottom_gap[212]))
 support_gap.sort(reverse=True)
 print("3.55% biggest score gap as for support is: {}".format(support_gap[212]))
+team_gap.sort(reverse=True)
+print("3.55% biggest score gap between the teams is: {}".format(team_gap[212]))
