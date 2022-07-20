@@ -56,6 +56,8 @@ class MatchingPoolThread(threading.Thread):
     elo_rating = EloRating()
     result_matching_data = []
     is_end = False
+    win_rate_max = 0.55
+    win_rate_min = 0.45
 
     def __init__(self):
         threading.Thread.__init__(self)
@@ -104,7 +106,7 @@ class MatchingPoolThread(threading.Thread):
             self.matching_success(summoner_list)
             return
 
-    def score(self, summoner_id):
+    def score(self, summoner_id, role=None):
         summoner = self.gold_summoner[self.gold_summoner["SummonerId"] == int(summoner_id)]
         return int(summoner["Score"].values[0])
 
@@ -163,7 +165,6 @@ class MatchingPoolThread(threading.Thread):
     def red_team(self, summoner_id, summoner_list, score_gap):
         team = [False, False, False, False, False]
         team_list = ["", "", "", "", ""]
-        blue_team_score = self.get_team_score(summoner_list)
         is_change = True
         b_win = 0
         for k in list(self.matching_pool.keys()):
@@ -181,49 +182,74 @@ class MatchingPoolThread(threading.Thread):
                         team[fill_in_role] = True
             else:
                 if is_change:
-                    red_team_score = self.get_team_score(team_list)
-                    self.elo_rating.rating_b = blue_team_score
-                    self.elo_rating.rating_r = red_team_score
+                    self.elo_rating.rating_b = self.get_team_score(summoner_list)
+                    self.elo_rating.rating_r = self.get_team_score(team_list)
                     b_win = self.elo_rating.compute_score()
                     is_change = False
+                    cosine_similarity_test = self.cosine_similarity(summoner_list, team_list)
 
-                    if b_win < 0.45:
-                        if current_summoner_id not in summoner_list and abs(
-                                self.score(summoner_id) - self.score(
-                                        current_summoner_id)) <= score_gap and self.score(
-                                team_list[int(current_role) - 1]) > self.score(current_summoner_id):
-                            team_list[int(current_role) - 1] = current_summoner_id
-                            is_change = True
-                        elif int(time.time() - v) > 300:
-                            for s in team_list:
-                                if self.score(s) > self.score(current_summoner_id):
-                                    s_index = team_list.index(s)
-                                    team_list[s_index] = current_summoner_id
-                                    is_change = True
-                                    break
-                    elif b_win > 0.55:
-                        if current_summoner_id not in summoner_list and abs(
-                                self.score(summoner_id) - self.score(
-                                        current_summoner_id)) <= score_gap and self.score(
-                                team_list[int(current_role) - 1]) < self.score(current_summoner_id):
-                            team_list[int(current_role) - 1] = current_summoner_id
-                            is_change = True
-                        elif int(time.time() - v) > 300:
-                            for s in team_list:
-                                if self.score(s) < self.score(current_summoner_id):
-                                    s_index = team_list.index(s)
-                                    team_list[s_index] = current_summoner_id
-                                    is_change = True
-                                    break
+                    if cosine_similarity_test:
+                        if b_win < self.win_rate_min:
+                            if current_summoner_id not in summoner_list and abs(
+                                    self.score(summoner_id) - self.score(
+                                            current_summoner_id)) <= score_gap and self.score(
+                                    team_list[int(current_role) - 1]) > self.score(current_summoner_id):
+                                team_list[int(current_role) - 1] = current_summoner_id
+                                is_change = True
+                            elif int(time.time() - v) > 300:
+                                for s in team_list:
+                                    if self.score(s) > self.score(current_summoner_id):
+                                        s_index = team_list.index(s)
+                                        team_list[s_index] = current_summoner_id
+                                        is_change = True
+                                        break
+                        elif b_win > self.win_rate_max:
+                            if current_summoner_id not in summoner_list and abs(
+                                    self.score(summoner_id) - self.score(
+                                            current_summoner_id)) <= score_gap and self.score(
+                                    team_list[int(current_role) - 1]) < self.score(current_summoner_id):
+                                team_list[int(current_role) - 1] = current_summoner_id
+                                is_change = True
+                            elif int(time.time() - v) > 300:
+                                for s in team_list:
+                                    if self.score(s) < self.score(current_summoner_id):
+                                        s_index = team_list.index(s)
+                                        team_list[s_index] = current_summoner_id
+                                        is_change = True
+                                        break
+                        else:
+                            logger.debug("current red team: {}".format(team_list))
+                            return team_list
                     else:
-                        logger.debug("current red team: {}".format(team_list))
-                        return team_list
+                        if current_summoner_id not in summoner_list and abs(self.score(summoner_id) - self.score(current_summoner_id)) <= score_gap:
+                            team_list[int(current_role) - 1] = current_summoner_id
+                            is_change = True
 
+        return self.internal_exchange(summoner_list, team_list, b_win)
+
+        # if "" in team_list:
+        #     return team_list
+        #
+        # for i in range(5):
+        #     if (b_win < 0.45 and self.score(summoner_list[i]) < self.score(team_list[i])) or (b_win > 0.55 and self.score(summoner_list[i]) > self.score(team_list[i])) or not self.cosine_similarity(summoner_list, team_list):
+        #         temp = team_list[i]
+        #         team_list[i] = summoner_list[i]
+        #         summoner_list[i] = temp
+        #         logger.debug("internal exchange for role {}: {} vs {}".format(i, summoner_list, team_list))
+        #         self.elo_rating.rating_b = self.get_team_score(summoner_list)
+        #         self.elo_rating.rating_r = self.get_team_score(team_list)
+        #         b_win = self.elo_rating.compute_score()
+        #     elif 0.45 <= b_win <= 0.55:
+        #         return team_list
+        #
+        # return ["", "", "", "", ""]
+
+    def internal_exchange(self, summoner_list, team_list, b_win):
         if "" in team_list:
             return team_list
 
         for i in range(5):
-            if (b_win < 0.45 and self.score(summoner_list[i]) < self.score(team_list[i])) or (b_win > 0.55 and self.score(summoner_list[i]) > self.score(team_list[i])):
+            if (b_win < self.win_rate_min and self.score(summoner_list[i]) < self.score(team_list[i])) or (b_win > self.win_rate_max and self.score(summoner_list[i]) > self.score(team_list[i])) or not self.cosine_similarity(summoner_list, team_list):
                 temp = team_list[i]
                 team_list[i] = summoner_list[i]
                 summoner_list[i] = temp
@@ -231,7 +257,7 @@ class MatchingPoolThread(threading.Thread):
                 self.elo_rating.rating_b = self.get_team_score(summoner_list)
                 self.elo_rating.rating_r = self.get_team_score(team_list)
                 b_win = self.elo_rating.compute_score()
-            elif 0.45 <= b_win <= 0.55:
+            elif self.win_rate_min <= b_win <= self.win_rate_max:
                 return team_list
 
         return ["", "", "", "", ""]
@@ -244,6 +270,9 @@ class MatchingPoolThread(threading.Thread):
         score /= 5
         logger.debug("current team average score: {}".format(score))
         return score
+
+    def cosine_similarity(self, blue_team, red_team):
+        return True
 
     def enter_pool(self, summoner_id, role):
         current_time = time.time()
@@ -269,19 +298,20 @@ class MatchingPoolThread(threading.Thread):
     def save_to_csv(self):
         name = ["blue top", "blue jungle", "blue mid", "blue bottom", "blue support", "red top", "red jungle", "red mid", "red bottom", "red support", "blue team win rate"]
         csv_data = pd.DataFrame(columns=name, data=self.result_matching_data)
-        csv_data.to_csv("results/MatchingResult.csv", encoding='utf-8')
+        csv_data.to_csv("results/MatchingResult5.csv", encoding='utf-8')
 
 
-matching_pool = MatchingPoolThread()
-matching_pool.start()
-# queue_order = random.sample(range(1,480423), 480422)
-queue_order = random.sample(range(1, 131553), 131552)
-order_counts = 0
-for order in queue_order:
-    apply_role = random.randint(1, 5)
-    matching_pool.enter_pool(gold_summoner.ids(order), apply_role)
-    order_counts += 1
-    if order_counts % 10000 == 0:
-        logger.debug("debug: {} summoners entered pool".format(order_counts))
-    if matching_pool.is_end:
-        break
+if __name__ == "__main__":
+    matching_pool = MatchingPoolThread()
+    matching_pool.start()
+    # queue_order = random.sample(range(1,480423), 480422)
+    queue_order = random.sample(range(1, 131553), 131552)
+    order_counts = 0
+    for order in queue_order:
+        apply_role = random.randint(1, 5)
+        matching_pool.enter_pool(gold_summoner.ids(order), apply_role)
+        order_counts += 1
+        if order_counts % 10000 == 0:
+            logger.debug("debug: {} summoners entered pool".format(order_counts))
+        if matching_pool.is_end:
+            break
