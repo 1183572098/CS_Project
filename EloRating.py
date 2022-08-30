@@ -266,6 +266,7 @@ class MatchingPoolThread(threading.Thread):
         score = 0
         for s in team_list:
             score += self.score(s)
+            # logger.debug("current score: {}".format(self.score(s)))
 
         score /= 5
         logger.debug("current team average score: {}".format(score))

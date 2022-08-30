@@ -200,14 +200,6 @@ for k, v in df.groupby("matchid").groups.items():
                     support_influence += (stats_df[stats_df["id"] == row["id"]]["kills"].values[0] + stats_df[stats_df["id"] == row["id"]]["assists"].values[0]) / (win_team_kills + win_team_assists)
         support_influence /= 2
 
-        # print(win_team_kills)
-        # print(win_team_assists)
-        # print(loss_team_deaths)
-        # print(top_influence)
-        # print(jungle_influence)
-        # print(mid_influence)
-        # print(bottom_influence)
-        # print(support_influence)
         print(top_influence+jungle_influence+mid_influence+bottom_influence+support_influence)
         if matches_df[matches_df["id"] == k]["duration"].values[0] <= 1200:
             bad_top_influence.update({k: top_influence})

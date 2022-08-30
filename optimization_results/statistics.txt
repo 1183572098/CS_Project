@@ -1,0 +1,148 @@
+7677s
+Blue team win rate(average): 0.49950082922727473
+The biggest score gap between summoners as for Top is: 262
+The biggest score gap between summoners as for jungle is: 233
+The biggest score gap between summoners as for mid is: 247
+The biggest score gap between summoners as for bottom is: 212
+The biggest score gap between summoners as for support is: 230
+The average score gap between summoners as for Top is: 50.26266666666667
+The average score gap between summoners as for jungle is: 48.239333333333335
+The average score gap between summoners as for mid is: 48.36
+The average score gap between summoners as for bottom is: 48.531166666666664
+The average score gap between summoners as for support is: 47.73433333333333
+3.55% biggest score gap as for top is: 131
+3.55% biggest score gap as for jungle is: 129
+3.55% biggest score gap as for mid is: 125
+3.55% biggest score gap as for bottom is: 127
+3.55% biggest score gap as for support is: 125
+3.55% biggest score gap between the teams is: 34.00346921075455
+3.55% smallest cosine similarity is: 2.2087888857812206
+
+6829s
+Blue team win rate(average): 0.4999787542317489
+The biggest score gap between summoners as for Top is: 268
+The biggest score gap between summoners as for jungle is: 224
+The biggest score gap between summoners as for mid is: 216
+The biggest score gap between summoners as for bottom is: 263
+The biggest score gap between summoners as for support is: 269
+The average score gap between summoners as for Top is: 50.36666666666667
+The average score gap between summoners as for jungle is: 46.62566666666667
+The average score gap between summoners as for mid is: 50.176833333333335
+The average score gap between summoners as for bottom is: 48.59016666666667
+The average score gap between summoners as for support is: 48.26133333333333
+3.55% biggest score gap as for top is: 130
+3.55% biggest score gap as for jungle is: 124
+3.55% biggest score gap as for mid is: 130
+3.55% biggest score gap as for bottom is: 127
+3.55% biggest score gap as for support is: 128
+3.55% biggest score gap between the teams is: 33.71205550737207
+3.55% smallest cosine similarity is: 2.234575930094145
+
+7195s
+Blue team win rate(average): 0.4994688706791586
+The biggest score gap between summoners as for Top is: 278
+The biggest score gap between summoners as for jungle is: 228
+The biggest score gap between summoners as for mid is: 247
+The biggest score gap between summoners as for bottom is: 196
+The biggest score gap between summoners as for support is: 210
+The average score gap between summoners as for Top is: 49.48283333333333
+The average score gap between summoners as for jungle is: 48.002
+The average score gap between summoners as for mid is: 48.7485
+The average score gap between summoners as for bottom is: 48.04216666666667
+The average score gap between summoners as for support is: 47.90716666666667
+3.55% biggest score gap as for top is: 128
+3.55% biggest score gap as for jungle is: 124
+3.55% biggest score gap as for mid is: 126
+3.55% biggest score gap as for bottom is: 124
+3.55% biggest score gap as for support is: 123
+3.55% biggest score gap between the teams is: 33.90546400693842
+3.55% smallest cosine similarity is: 2.216357370842925
+
+8988s
+Blue team win rate(average): 0.5002342004304475
+The biggest score gap between summoners as for Top is: 258
+The biggest score gap between summoners as for jungle is: 223
+The biggest score gap between summoners as for mid is: 242
+The biggest score gap between summoners as for bottom is: 202
+The biggest score gap between summoners as for support is: 212
+The average score gap between summoners as for Top is: 49.74766666666667
+The average score gap between summoners as for jungle is: 47.19766666666667
+The average score gap between summoners as for mid is: 47.907833333333336
+The average score gap between summoners as for bottom is: 48.00566666666667
+The average score gap between summoners as for support is: 48.22516666666667
+3.55% biggest score gap as for top is: 133
+3.55% biggest score gap as for jungle is: 124
+3.55% biggest score gap as for mid is: 128
+3.55% biggest score gap as for bottom is: 125
+3.55% biggest score gap as for support is: 123
+3.55% biggest score gap between the teams is: 33.842150910667826
+3.55% smallest cosine similarity is: 2.1804545596416123
+
+10016s
+Blue team win rate(average): 0.5003403497285615
+The biggest score gap between summoners as for Top is: 230
+The biggest score gap between summoners as for jungle is: 224
+The biggest score gap between summoners as for mid is: 209
+The biggest score gap between summoners as for bottom is: 225
+The biggest score gap between summoners as for support is: 228
+The average score gap between summoners as for Top is: 50.30383333333333
+The average score gap between summoners as for jungle is: 47.516333333333336
+The average score gap between summoners as for mid is: 48.87683333333333
+The average score gap between summoners as for bottom is: 47.23616666666667
+The average score gap between summoners as for support is: 48.046
+3.55% biggest score gap as for top is: 132
+3.55% biggest score gap as for jungle is: 124
+3.55% biggest score gap as for mid is: 128
+3.55% biggest score gap as for bottom is: 124
+3.55% biggest score gap as for support is: 125
+3.55% biggest score gap between the teams is: 33.91066782307025
+3.55% smallest cosine similarity is: 2.222299465300731
+1175
+The biggest score gap between summoners as for Top is: 214
+The biggest score gap between summoners as for jungle is: 184
+The biggest score gap between summoners as for mid is: 203
+The biggest score gap between summoners as for bottom is: 192
+The biggest score gap between summoners as for support is: 167
+The average score gap between summoners as for Top is: 50.774468085106385
+The average score gap between summoners as for jungle is: 44.75234042553191
+The average score gap between summoners as for mid is: 48.659574468085104
+The average score gap between summoners as for bottom is: 44.99744680851064
+The average score gap between summoners as for support is: 44.782978723404256
+3.55% biggest score gap as for top is: 86
+3.55% biggest score gap as for jungle is: 76
+3.55% biggest score gap as for mid is: 82
+3.55% biggest score gap as for bottom is: 77
+3.55% biggest score gap as for support is: 75
+3.55% biggest score gap between the teams is: 5.5967042497831745
+3.55% smallest cosine similarity is: 1.4433419289124143
+
+11317s
+Blue team win rate(average): 0.5007914403811996
+The biggest score gap between summoners as for Top is: 231
+The biggest score gap between summoners as for jungle is: 153
+The biggest score gap between summoners as for mid is: 196
+The biggest score gap between summoners as for bottom is: 150
+The biggest score gap between summoners as for support is: 148
+The average score gap between summoners as for Top is: 51.0945
+The average score gap between summoners as for jungle is: 45.49783333333333
+The average score gap between summoners as for mid is: 48.2825
+The average score gap between summoners as for bottom is: 45.670833333333334
+The average score gap between summoners as for support is: 46.17183333333333
+3.55% biggest score gap as for top is: 132
+3.55% biggest score gap as for jungle is: 116
+3.55% biggest score gap as for mid is: 124
+3.55% biggest score gap as for bottom is: 117
+3.55% biggest score gap as for support is: 113
+3.55% biggest score gap between the teams is: 54.42671292281006
+3.55% smallest cosine similarity is: 2.092030741947344
+20
+The biggest score gap between summoners as for Top is: 57
+The biggest score gap between summoners as for jungle is: 27
+The biggest score gap between summoners as for mid is: 23
+The biggest score gap between summoners as for bottom is: 17
+The biggest score gap between summoners as for support is: 21
+The average score gap between summoners as for Top is: 24.75
+The average score gap between summoners as for jungle is: 7.9
+The average score gap between summoners as for mid is: 10.9
+The average score gap between summoners as for bottom is: 8.05
+The average score gap between summoners as for support is: 9.55

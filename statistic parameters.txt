@@ -46,3 +46,30 @@ mid influence between bad and good matches: 0.00214271461489658
 bottom influence between bad and good matches: 0.0028771364591193
 support influence between bad and good matches: 0.00295292398295327
 TOP:JUNGLE:MID:BOTTOM:SUPPORT = 76:280:214:288:295
+
+
+The biggest score gap between summoners as for Top is: 236
+The biggest score gap between summoners as for jungle is: 240
+The biggest score gap between summoners as for mid is: 229
+The biggest score gap between summoners as for bottom is: 266
+The biggest score gap between summoners as for support is: 259
+3.55% biggest score gap as for top is: 128
+3.55% biggest score gap as for jungle is: 130
+3.55% biggest score gap as for mid is: 128
+3.55% biggest score gap as for bottom is: 131
+3.55% biggest score gap as for support is: 128
+3.55% biggest score gap between the teams is: 43.550737207285344
+3.55% smallest cosine similarity is: 0.9983935607570984
+
+The biggest score gap between summoners as for Top is: 262
+The biggest score gap between summoners as for jungle is: 233
+The biggest score gap between summoners as for mid is: 247
+The biggest score gap between summoners as for bottom is: 212
+The biggest score gap between summoners as for support is: 230
+3.55% biggest score gap as for top is: 131
+3.55% biggest score gap as for jungle is: 129
+3.55% biggest score gap as for mid is: 125
+3.55% biggest score gap as for bottom is: 127
+3.55% biggest score gap as for support is: 125
+3.55% biggest score gap between the teams is: 34.00346921075455
+3.55% smallest cosine similarity is: 2.2087888857812206
